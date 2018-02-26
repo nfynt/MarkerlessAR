@@ -41,7 +41,7 @@ public class Annotation : MonoBehaviour {
 					drawLine = true;
 					GameObject go = new GameObject ("ann" + annCounter.ToString ());
 					go.transform.SetParent (transform);
-					go.AddComponent<LineRenderer> ().numPositions = annCounter;
+					go.AddComponent<LineRenderer> ().positionCount = annCounter;
 					go.GetComponent<LineRenderer> ().material = annoMat;
 					go.GetComponent<LineRenderer> ().startWidth = go.GetComponent<LineRenderer> ().endWidth = lineWidth;
 					go.GetComponent<LineRenderer> ().widthMultiplier = lineWidth;
@@ -58,7 +58,7 @@ public class Annotation : MonoBehaviour {
 			if (drawLine && (touchCurr-touchLast).sqrMagnitude>minVertDist) {
 				vertCounter++;
 				Vector3 worldPos = Camera.main.ScreenToWorldPoint (new Vector3 (touch0.position.x, touch0.position.y, 2f));
-				currLine.GetComponent<LineRenderer> ().numPositions = vertCounter;
+				currLine.GetComponent<LineRenderer> ().positionCount = vertCounter;
 				currLine.GetComponent<LineRenderer> ().SetPosition (vertCounter-1, worldPos);
 				touchLast = touchCurr;
 			}
